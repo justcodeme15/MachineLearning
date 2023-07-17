@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!-- Page Content-->
+<div class="container-fluid">
+    <h2 class="text-center">Austrialian Bike Buyer</h2>
+    <p class="text-center">Predict the capability of australian customer.</p>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <h3 class="text-center">{{prediction_text}}</h3>
+                <form action="/predict" method="POST">
+                    <div class="form-group">
+                        <label for="">Yearly Income</label>
+                        <input type="number" class="form-control" name="yearlyincome" placeholder="Enter yearly income"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Average Monthly Spend</label>
+                        <input type="number" class="form-control" name="avemonthspend"
+                            placeholder="Enter average monthly spend" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Total Children</label>
+                        <input type="number" class="form-control" name="totalchildren"
+                            placeholder="Enter total children" required>
+                    </div>
+                    <button class="btn btn-success mt-2" type="submit">Predict</button>
+                </form>
+            </div>
+            <table class="table table-bordered mt-2 text-center">
+                <thead>
+                    <tr>
+                        <th>Yearly Income</th>
+                        <th>Ave. Monthly Spend</th>
+                        <th>Total Children</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{user_data[0]}}</td>
+                        <td>{{user_data[1]}}</td>
+                        <td>{{user_data[2]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
